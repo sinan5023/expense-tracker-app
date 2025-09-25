@@ -25,7 +25,7 @@ function addExpense() {
     amounterrmsg.innerText = "";
 
     let expense = {
-      category: category.value,
+      category: category.value.trim().toLowerCase(),
       amount: Number(amount.value),
       date: new Date().toLocaleDateString(),
     };
@@ -42,8 +42,8 @@ function addExpense() {
 
 calculateExpense = () => {
   let total = expenses.reduce((sum, expenses) => sum + expenses.amount, 0);
-  totalExpense.textContent = `$${total.toFixed(2)}`;
-  totalEntries.textContent = `${expenses.length}`;
+  totalExpense.textContent = `₹₹{total.toFixed(2)}`;
+  totalEntries.textContent = `₹{expenses.length}`;
 };
 function DisplayChart() {
   let sumCategory = [];
@@ -89,11 +89,11 @@ displaylist = () => {
     list.innerHTML = ` 
      <div class="expense-item">
             <div class="expense-details">
-              <h4>${expense.category}</h4>
-              <span>${expense.date}</span>
+              <h4>₹{expense.category}</h4>
+              <span>₹{expense.date}</span>
             </div>
             <div style="display: flex; align-items: center">
-              <div class="expense-amount">$${expense.amount}</div>
+              <div class="expense-amount">₹₹{expense.amount}</div>
               <button class="delete-btn">🗑</button>
             </div>
           </div>`;
